@@ -1,8 +1,8 @@
 package leda;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,16 +19,23 @@ public class Main {
             return;
         }
 
-        try (Scanner scanner = new Scanner(file)) {
-            while (scanner.hasNextInt()) {
-                int key = scanner.nextInt();
+        try {
+            String conteudo = new String(Files.readAllBytes(Paths.get(arquivo)));
+            StringBuffer elementos = new StringBuffer(conteudo);
+            
+            String[] numeros = elementos.toString().split("\\s+");
+            
+            for (String num : numeros) {
                 try {
-                    hashTable.insert(key); 
+                    int key = Integer.parseInt(num.trim());
+                    hashTable.insert(key);
+                } catch (NumberFormatException e) {
+                    System.out.println("Número inválido encontrado e ignorado: " + num);
                 } catch (FoldingMethod.CollisionException e) {
-                    System.out.println(e.getMessage()); 
+                    System.out.println(e.getMessage());
                 }
             }
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             System.out.println("Erro ao abrir o arquivo: " + e.getMessage());
         }
 

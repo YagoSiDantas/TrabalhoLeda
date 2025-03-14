@@ -18,7 +18,18 @@
 		<link>
 			<name>src/random_numbers3.txt</name>
 			<type>1</type>
-			<location>C:/Users/That&apos;s Not Me/Downloads/random_numbers3.txt</location>
+			<location>/home/yago.siqueira.dantas/TrabalhoLeda/C::/Users/That&apos;s Not Me/Downloads/random_numbers3.txt</location>
 		</link>
 	</linkedResources>
+	<filteredResources>
+		<filter>
+			<id>1741955402254</id>
+			<name></name>
+			<type>30</type>
+			<matcher>
+				<id>org.eclipse.core.resources.regexFilterMatcher</id>
+				<arguments>node_modules|\.git|__CREATED_BY_JAVA_LANGUAGE_SERVER__</arguments>
+			</matcher>
+		</filter>
+	</filteredResources>
 </projectDescription>
