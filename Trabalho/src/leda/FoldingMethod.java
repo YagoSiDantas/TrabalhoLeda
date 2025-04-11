@@ -1,5 +1,8 @@
 package leda;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,12 +15,6 @@ public class FoldingMethod {
         this.tableSize = tableSize;
         this.hashTable = new HashMap<>();
         this.collisions = 0;
-    }
-
-    public static class CollisionException extends Exception {
-        public CollisionException(String message) {
-            super(message);
-        }
     }
 
     private int foldingHash(int key) {
@@ -34,17 +31,15 @@ public class FoldingMethod {
         return hashValue % tableSize;
     }
 
-    public void insert(int key) throws CollisionException {
+    public void insert(int key) {
         int hash = foldingHash(key);
         if (hashTable.containsKey(hash)) {
             collisions++;
-            throw new CollisionException("Colisão detectada para a chave: " + key);
+        } else {
+            hashTable.put(hash, key);
         }
-        hashTable.put(hash, key);
     }
 
     public int getCollisions() {
         return collisions;
     }
-}
-
