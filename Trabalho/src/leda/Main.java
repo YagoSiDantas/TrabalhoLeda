@@ -3,9 +3,16 @@ package leda;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.file;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        String caminho = "C:/Users/yyago/Desktop/random_numbers3.txt"
+        string linha = ""
+        File file = new File(caminho);
+        Scanner scan = new Scanner(File)
+            
         if (args.length != 1) {
             System.out.println("Uso: java Main <caminho_do_arquivo>");
             return;
